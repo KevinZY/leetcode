@@ -1,5 +1,7 @@
 package com.zhangyang.leetcode.linkedlist;
 
+import com.zhangyang.leetcode.linkedlist.po.ListNode;
+
 /**
  * Created by yzhang on 2018/10/16.
  */
@@ -35,15 +37,5 @@ public class ListCircle {
 
         boolean hasCycle = ListCircle.hasCycle(listNode1);
         assert hasCycle;
-    }
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
     }
 }

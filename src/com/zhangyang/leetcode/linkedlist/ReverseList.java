@@ -1,5 +1,7 @@
 package com.zhangyang.leetcode.linkedlist;
 
+import com.zhangyang.leetcode.linkedlist.po.ListNode;
+
 /**
  * Created by yzhang on 2018/10/16.
  */
@@ -72,21 +74,6 @@ public class ReverseList {
             assert node.val == val;
             val--;
             node = node.next;
-        }
-    }
-
-    //Definition for singly-linked list.
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        public ListNode(int x) {
-            val = x;
-        }
-
-        public ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
         }
     }
 }
