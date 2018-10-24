@@ -7,7 +7,7 @@ import org.junit.Test;
  * Created by zhangyang on 2018/10/24.
  */
 public class LoopQueueTest {
-    private LoopQueue loopQueue = new LoopQueue();
+    private ArrayLoopQueue loopQueue = new ArrayLoopQueue();
 
     @Test
     public void testLoopQueue() {

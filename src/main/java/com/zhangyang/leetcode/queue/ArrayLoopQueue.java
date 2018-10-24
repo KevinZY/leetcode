@@ -4,13 +4,13 @@ package com.zhangyang.leetcode.queue;
  * Created by zhangyang on 2018/10/24.
  * LoopQueue base on Array
  */
-public class LoopQueue {
+public class ArrayLoopQueue {
     private int head = 0;
     private int tail = 0;
     private int[] array;
     private static final int ARRAY_SIZE = 5;
 
-    public LoopQueue() {
+    public ArrayLoopQueue() {
         array = new int[ARRAY_SIZE];
     }
 
