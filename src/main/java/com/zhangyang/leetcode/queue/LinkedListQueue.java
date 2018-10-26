@@ -6,8 +6,8 @@ import com.zhangyang.leetcode.linkedlist.po.ListNode;
  * Created by zhangyang on 2018/10/24.
  */
 public class LinkedListQueue {
-    private ListNode head = new ListNode(233);
-    private ListNode tail = head;
+    private ListNode guard = new ListNode(233);
+    private ListNode tail = guard;
 
     public boolean offer(int data) {
         ListNode newNode = new ListNode(data);
@@ -17,22 +17,22 @@ public class LinkedListQueue {
     }
 
     public Integer peek() {
-        if (head == tail) return null;
-        return head.next.val;
+        if (guard == tail) return null;
+        return guard.next.val;
     }
 
     public Integer poll() {
-        if (head.next == tail) {
+        if (guard.next == tail) {
             int val = tail.val;
-            tail = head;
-            head.next = null;
+            tail = guard;
+            guard.next = null;
             return val;
-        } else if (head == tail) {
+        } else if (guard == tail) {
             return null;
         }
 
-        int val = head.next.val;
-        head.next = head.next.next;
+        int val = guard.next.val;
+        guard.next = guard.next.next;
         return val;
     }
 }
