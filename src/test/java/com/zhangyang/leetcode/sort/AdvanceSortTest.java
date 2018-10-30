@@ -8,43 +8,32 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-/**
- * Created by zhangyang on 2018/10/28.
- */
+import static org.junit.Assert.*;
 
+/**
+ * Created by zhangyang on 2018/10/30.
+ */
 @RunWith(Parameterized.class)
-public class SortingTest {
+public class AdvanceSortTest {
 
     private int[] input;
     private int[] expected;
 
-    public SortingTest(int[] input, int[] expected) {
+    public AdvanceSortTest(int[] input, int[] expected) {
         this.input = input;
         this.expected = expected;
     }
 
     @Test
-    public void bubbleSort() throws Exception {
-        Sorting.BubbleSort(input, input.length);
+    public void mergeSort() throws Exception {
+        int count = AdvanceSort.mergeSort(input);
         for (int i = 0; i < expected.length; i++) {
             Assert.assertEquals(expected[i], input[i]);
         }
     }
 
     @Test
-    public void insertSort() throws Exception {
-        Sorting.InsertSort(input, input.length);
-        for (int i = 0; i < expected.length; i++) {
-            Assert.assertEquals(expected[i], input[i]);
-        }
-    }
-
-    @Test
-    public void selectSort() throws Exception {
-        Sorting.SelectSort(input, input.length);
-        for (int i = 0; i < expected.length; i++) {
-            Assert.assertEquals(expected[i], input[i]);
-        }
+    public void quickSort() throws Exception {
     }
 
 
@@ -55,4 +44,5 @@ public class SortingTest {
                 {new int[]{83, 28, 23, 47, 10, 93}, new int[]{10, 23, 28, 47, 83, 93}}
         });
     }
+
 }

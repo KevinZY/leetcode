@@ -3,7 +3,7 @@ package com.zhangyang.leetcode.sort;
 /**
  * Created by zhangyang on 2018/10/28.
  */
-public class Sorting {
+public class SimpleSort {
 
     /**
      * Space: O(1)
