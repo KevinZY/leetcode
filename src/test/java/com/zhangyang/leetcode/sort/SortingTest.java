@@ -33,17 +33,26 @@ public class SortingTest {
 
     @Test
     public void insertSort() throws Exception {
+        Sorting.InsertSort(input, input.length);
+        for (int i = 0; i < expected.length; i++) {
+            Assert.assertEquals(expected[i], input[i]);
+        }
     }
 
     @Test
     public void selectSort() throws Exception {
+        Sorting.SelectSort(input, input.length);
+        for (int i = 0; i < expected.length; i++) {
+            Assert.assertEquals(expected[i], input[i]);
+        }
     }
 
 
     @Parameterized.Parameters
     public static Collection params() {
         return Arrays.asList(new Object[][]{
-                {new int[]{1, 2, 5, 1, 2, 4, 5}, new int[]{1, 1, 2, 2, 4, 5, 5}}
+                {new int[]{1, 2, 5, 1, 2, 4, 5}, new int[]{1, 1, 2, 2, 4, 5, 5}},
+                {new int[]{83, 28, 23, 47, 10, 93}, new int[]{10, 23, 28, 47, 83, 93}}
         });
     }
 }
