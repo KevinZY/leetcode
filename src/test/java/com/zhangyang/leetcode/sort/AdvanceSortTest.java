@@ -8,15 +8,13 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by zhangyang on 2018/10/30.
  */
 @RunWith(Parameterized.class)
 public class AdvanceSortTest {
-
     private int[] input;
+
     private int[] expected;
 
     public AdvanceSortTest(int[] input, int[] expected) {
@@ -26,7 +24,7 @@ public class AdvanceSortTest {
 
     @Test
     public void mergeSort() throws Exception {
-        int count = AdvanceSort.mergeSort(input);
+        AdvanceSort.mergeSort(input);
         for (int i = 0; i < expected.length; i++) {
             Assert.assertEquals(expected[i], input[i]);
         }
@@ -34,6 +32,10 @@ public class AdvanceSortTest {
 
     @Test
     public void quickSort() throws Exception {
+        AdvanceSort.quickSort(input);
+        for (int i = 0; i < expected.length; i++) {
+            Assert.assertEquals(expected[i], input[i]);
+        }
     }
 
 
@@ -41,7 +43,8 @@ public class AdvanceSortTest {
     public static Collection params() {
         return Arrays.asList(new Object[][]{
                 {new int[]{1, 2, 5, 1, 2, 4, 5}, new int[]{1, 1, 2, 2, 4, 5, 5}},
-                {new int[]{83, 28, 23, 47, 10, 93}, new int[]{10, 23, 28, 47, 83, 93}}
+                {new int[]{83, 28, 23, 47, 10, 93}, new int[]{10, 23, 28, 47, 83, 93}},
+                {new int[]{198,185, 165, 126, 124, 123, 115, 102, 101, 100, 98, 45, 42, 35, 23, 10}, new int[]{}}
         });
     }
 
