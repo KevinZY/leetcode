@@ -69,12 +69,12 @@ public class AdvanceSort {
          * @param right
          */
         void mergeSort(int left, int right) {
-            System.out.println(Arrays.toString(array));
             if (left == right) return;
             int half = (left + right) / 2;
             if (half != left) mergeSort(left, half);
             if (half != right) mergeSort(half + 1, right);
             join(left, half, right);
+            System.out.println(Arrays.toString(array));
         }
 
         void join(int left, int half, int right) {

@@ -43,6 +43,7 @@ public class AdvanceSortTest {
     public static Collection params() {
         return Arrays.asList(new Object[][]{
                 {new int[]{1, 2, 5, 1, 2, 4, 5}, new int[]{1, 1, 2, 2, 4, 5, 5}},
+                {new int[]{90, 99, 29, 37, 42}, new int[]{29, 37, 42, 90, 99}},
                 {new int[]{83, 28, 23, 47, 10, 93}, new int[]{10, 23, 28, 47, 83, 93}},
                 {new int[]{198,185, 165, 126, 124, 123, 115, 102, 101, 100, 98, 45, 42, 35, 23, 10}, new int[]{}}
         });
