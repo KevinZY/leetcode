@@ -1,5 +1,6 @@
 package com.zhangyang.leetcode.sort;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -73,11 +74,10 @@ public class AdvanceSort {
             int half = (left + right) / 2;
             if (half != left) mergeSort(left, half);
             if (half != right) mergeSort(half + 1, right);
-            join(left, half, right);
-            System.out.println(Arrays.toString(array));
+            merge(left, half, right);
         }
 
-        void join(int left, int half, int right) {
+        void merge(int left, int half, int right) {
             int[] temp = new int[right - left + 1];
             int t = 0, i = left, j = half + 1;
             while (i <= half && j <= right) {
@@ -92,13 +92,9 @@ public class AdvanceSort {
                 start = j;
                 end = right;
             }
-            for (int k = start; k <= end; k++) {
-                temp[t++] = array[k];
-            }
 
-            for (int x = 0; x < temp.length; x++) {
-                array[left + x] = temp[x];
-            }
+            System.arraycopy(array, start, temp, t, end - start + 1);
+            System.arraycopy(temp, 0, array, left, temp.length);
         }
     }
 }

@@ -2,23 +2,20 @@ package com.zhangyang.leetcode.sort;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by zhangyang on 2018/11/2.
  */
 public class ForkJoinMergeSort {
-    public static void main(String[] args) throws InterruptedException {
+
+    public static void sort(int[] array) {
+        SortTask sortTask = new SortTask(array);
         ForkJoinPool forkJoinPool = new ForkJoinPool();
-        int[] input = new int[]{73, 59, 89, 38, 88};
-        System.out.println(Arrays.toString(input));
-        SortTask sortTask = new SortTask(input);
-        forkJoinPool.execute(sortTask);
+        forkJoinPool.invoke(sortTask);
         forkJoinPool.shutdown();
-        forkJoinPool.awaitTermination(2, TimeUnit.MINUTES);
-        System.out.println(Arrays.toString(input));
     }
 
     private static class SortTask extends RecursiveAction {
@@ -37,14 +34,13 @@ public class ForkJoinMergeSort {
             this.array = array;
             this.lo = lo;
             this.hi = hi;
-            this.pivot = (hi + lo) / 2;
+            this.pivot = (hi + lo) >> 1;
         }
 
         @Override
         protected void compute() {
             ArrayList<SortTask> tasks = new ArrayList<>(2);
             if (lo == hi) return;
-            System.out.println("lo:" + lo + "; hi:" + hi + "; pivot:" + pivot + " {start: " + Arrays.toString(array) + "}");
             if (pivot > lo) {
                 tasks.add(new SortTask(array, lo, pivot));
             }
@@ -53,7 +49,6 @@ public class ForkJoinMergeSort {
             }
             invokeAll(tasks);
             merge();
-            System.out.println("lo:" + lo + "; hi:" + hi + "; pivot:" + pivot + " {end: " + Arrays.toString(array) + "}");
         }
 
         private void merge() {
@@ -67,18 +62,13 @@ public class ForkJoinMergeSort {
                 }
             }
 
-            int start = lo, end = pivot;
+            int start = i, end = pivot;
             if (j <= hi) {
                 start = j;
                 end = hi;
             }
-            for (int k = start; k <= end; k++) {
-                tmp[t++] = array[k];
-            }
-
-            for (int x = 0; x < tmp.length; x++) {
-                array[lo + x] = tmp[x];
-            }
+            System.arraycopy(array, start, tmp, t, end - start + 1);
+            System.arraycopy(tmp, 0, array, lo, tmp.length);
         }
     }
 }
