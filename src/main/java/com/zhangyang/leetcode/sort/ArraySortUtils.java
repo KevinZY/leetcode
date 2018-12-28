@@ -1,12 +1,11 @@
 package com.zhangyang.leetcode.sort;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
  * Created by zhangyang on 2018/10/30.
  */
-public class AdvanceSort {
+public class ArraySortUtils {
 
     public static void mergeSort(int[] data) {
         MergeSort.of(data).sort();
@@ -52,6 +51,9 @@ public class AdvanceSort {
 
     private static class MergeSort {
         int[] array;
+
+        private MergeSort() {
+        }
 
         static MergeSort of(int[] data) {
             MergeSort mergeSort = new MergeSort();

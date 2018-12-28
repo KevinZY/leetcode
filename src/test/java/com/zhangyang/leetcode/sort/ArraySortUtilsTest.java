@@ -12,19 +12,19 @@ import java.util.Collection;
  * Created by zhangyang on 2018/10/30.
  */
 @RunWith(Parameterized.class)
-public class AdvanceSortTest {
+public class ArraySortUtilsTest {
     private int[] input;
 
     private int[] expected;
 
-    public AdvanceSortTest(int[] input, int[] expected) {
+    public ArraySortUtilsTest(int[] input, int[] expected) {
         this.input = input;
         this.expected = expected;
     }
 
     @Test
     public void mergeSort() throws Exception {
-        AdvanceSort.mergeSort(input);
+        ArraySortUtils.mergeSort(input);
         for (int i = 0; i < expected.length; i++) {
             Assert.assertEquals(expected[i], input[i]);
         }
@@ -32,7 +32,7 @@ public class AdvanceSortTest {
 
     @Test
     public void quickSort() throws Exception {
-        AdvanceSort.quickSort(input);
+        ArraySortUtils.quickSort(input);
         for (int i = 0; i < expected.length; i++) {
             Assert.assertEquals(expected[i], input[i]);
         }

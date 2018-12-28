@@ -3,8 +3,6 @@ package com.zhangyang.leetcode.sort;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -34,7 +32,7 @@ public class ForkJoinMergeSortTest {
     @Test
     public void basicMergeSort() {
         long start = System.currentTimeMillis();
-        AdvanceSort.mergeSort(input);
+        ArraySortUtils.mergeSort(input);
         long end = System.currentTimeMillis();
 //        System.out.println(Arrays.toString(input));
         System.out.println("single thread time: " + (end - start));
