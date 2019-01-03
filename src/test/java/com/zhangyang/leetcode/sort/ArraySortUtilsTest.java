@@ -33,9 +33,10 @@ public class ArraySortUtilsTest {
     @Test
     public void quickSort() throws Exception {
         ArraySortUtils.quickSort(input);
-        for (int i = 0; i < expected.length; i++) {
-            Assert.assertEquals(expected[i], input[i]);
-        }
+        Assert.assertArrayEquals(expected, input);
+//        for (int i = 0; i < expected.length; i++) {
+//            Assert.assertEquals(expected[i], input[i]);
+//        }
     }
 
 

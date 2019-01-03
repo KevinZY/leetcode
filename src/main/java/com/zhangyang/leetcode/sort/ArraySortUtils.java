@@ -1,6 +1,6 @@
 package com.zhangyang.leetcode.sort;
 
-import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Created by zhangyang on 2018/10/30.
@@ -29,16 +29,25 @@ public class ArraySortUtils {
         }
 
         void quickSort(int start, int end) {
-            int i = start;
-            for (int j = start; j < end; j++) {
-                if (array[j] < array[end]) {
-                    swap(array, i++, j);  //unstable
+            int pivot = partition(start, end);
+            int left = pivot - 1;
+            int right = pivot + 1;
+            if (left > start) quickSort(start, left);
+            if (right < end) quickSort(right, end);
+        }
+
+        private int partition(int start, int end) {
+            int bound = new Random().nextInt(end + 1);
+            int pivot = bound % (end - start + 1) + start;
+            swap(array, pivot, end);
+            pivot = start;
+            for (int i = start; i < end; i++) {
+                if (array[i] < array[end]) {
+                    swap(array, pivot++, i);
                 }
             }
-            swap(array, i, end);
-            System.out.println(Arrays.toString(array));
-            if (i - 1 > start) quickSort(start, i - 1);
-            if (i + 1 < end) quickSort(i + 1, end);
+            swap(array, pivot, end);
+            return pivot;
         }
 
         private static void swap(int[] data, int i, int j) {
